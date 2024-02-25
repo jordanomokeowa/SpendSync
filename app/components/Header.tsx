@@ -1,6 +1,4 @@
-import { Image } from '@rneui/themed';
-import { Text, View, StyleSheet } from 'react-native'; 
-import { useAssets } from 'expo-asset';
+import { View, StyleSheet } from 'react-native'; 
 import React from 'react';
 import { Menu, MoreVertical } from "react-native-feather";
 
