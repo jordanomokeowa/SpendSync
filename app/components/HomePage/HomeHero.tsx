@@ -47,11 +47,12 @@ export default function HomeHero(){
 
         <View style={styles.widgetBox}>
             <View>
-                <Text>1st Mar 224</Text>
-                <Text>Next Payment Date</Text>
+                <Text style={[styles.widgetText, styles.widgetTextPrimary]}>1st Mar 24</Text>
+                <Text style={[styles.widgetText, styles.widgetTextSecondary]}>Next Payment Date</Text>
             </View>
             <View>
-
+                <Text style={[styles.widgetText, styles.widgetTextPrimary]}>3 Days</Text>
+                <Text style={[styles.widgetText, styles.widgetTextSecondary]}>Till Payday</Text>
             </View>
         </View>
         
@@ -66,10 +67,9 @@ const styles = StyleSheet.create({
         justifyContent:'space-between',
         alignItems:'flex-end',
         flexDirection:'row',
-        width:'75%',
+        width:'80%',
         marginRight: 'auto',
         marginLeft:'auto',
-        borderWidth:1,
         flexWrap:'wrap',
     },
     valueWrapper:{
@@ -92,8 +92,7 @@ const styles = StyleSheet.create({
         lineHeight:70,
         fontFamily: 'Lato_400Regular',
         color:'white',
-        transform: [{translateY:10}]
-
+        transform: [{translateY:10}],
     },
     valueSecondary:{
         fontSize:20,
@@ -108,7 +107,24 @@ const styles = StyleSheet.create({
         marginRight:'auto'
     },
     widgetBox:{
-        // marginTop: 
+        display:'flex',
+        justifyContent: 'space-around',
+        flexDirection:'row',
+        marginVertical: 20,
         width:'100%'
+    },
+    widgetText:{
+        textAlign:'center'
+    },
+    widgetTextPrimary:{
+        fontSize:20,
+        fontFamily:'Lato_300Light',
+        color:'white',
+        marginBottom:3
+    },
+    widgetTextSecondary:{
+        fontSize:11,
+        fontFamily:'Lato_300Light',
+        color:'white'
     }
 })

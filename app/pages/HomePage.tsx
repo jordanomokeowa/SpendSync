@@ -1,5 +1,5 @@
 import {StyleSheet, Text, View } from 'react-native';
-import Header from '../components/Header';
+import Header from '../components/utils/Header';
 import HomeHero from '../components/HomePage/HomeHero';
 import HomePageList from '../components/HomePage/HomePageList';
 import React from 'react';
