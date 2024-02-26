@@ -38,10 +38,22 @@ export default function HomeHero(){
         
         <View style={styles.valueWrapper}>
             <Text 
-            style={styles.valuePrimary}>£400</Text><Text style={styles.valueSecondary}>.25</Text> 
+            style={styles.valuePrimary}>£4000</Text><Text style={styles.valueSecondary}>.25</Text> 
         </View>
 
         <ProgressBar />
+
+        <Text style={styles.updatedText}>Last Updated 12:59, 21 Feb 24</Text>
+
+        <View style={styles.widgetBox}>
+            <View>
+                <Text>1st Mar 224</Text>
+                <Text>Next Payment Date</Text>
+            </View>
+            <View>
+
+            </View>
+        </View>
         
 
     </View>)
@@ -49,36 +61,29 @@ export default function HomeHero(){
 
 const styles = StyleSheet.create({
     wrapper: {
-        height: '20%',
+        height: 'auto',
         display: 'flex',
         justifyContent:'space-between',
-        alignItems:'center',
+        alignItems:'flex-end',
         flexDirection:'row',
-        width:'80%',
+        width:'75%',
         marginRight: 'auto',
         marginLeft:'auto',
         borderWidth:1,
         flexWrap:'wrap',
-        gap:10
     },
     valueWrapper:{
-        height:'40%',
         display:'flex',
         flexDirection:'row',
-        borderWidth:1,
-        alignItems:'flex-end',
-        textAlignVertical:'center'
-
+        alignItems:'flex-end'
     },
     availableWrapper: {
-      height:'40%',
-      alignSelf:'center',
       display:'flex',
       justifyContent:'flex-end',
 
     },
     availableText:{
-        fontSize:20,
+        fontSize:16,
         fontFamily:'Lato_300Light',
         color:'white',
     },
@@ -87,11 +92,23 @@ const styles = StyleSheet.create({
         lineHeight:70,
         fontFamily: 'Lato_400Regular',
         color:'white',
-        includeFontPadding:false,
-        backgroundColor:'red'
+        transform: [{translateY:10}]
+
     },
     valueSecondary:{
         fontSize:20,
-        color:'white'
+        color:'white',
+        fontFamily: 'Lato_400Regular',
+    },
+    updatedText:{
+        fontFamily: 'Lato_300Light',
+        fontSize:12,
+        color:'white',
+        marginLeft:'auto',
+        marginRight:'auto'
+    },
+    widgetBox:{
+        // marginTop: 
+        width:'100%'
     }
 })

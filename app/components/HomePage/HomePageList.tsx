@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
     wrapper:{
         height:'100%',
         borderWidth: 1,
-        borderTopLeftRadius: 40,
-        borderTopRightRadius: 40
+        borderTopLeftRadius: 30,
+        borderTopRightRadius: 30
     }
 })

@@ -6,16 +6,8 @@ export default function ProgressBar(){
     <View style={styles.barWrapper}>
 
 
-        <View style={[styles.barBase, styles.bar]}>
-        
-        </View>
-
-        <View style={[styles.barTop, styles.bar]}>
-        
-        </View>    
-    
-    {/* <Image  source={require('../../../assets/progressbar-base.png')}/>
-    <Image  source={require('../../../assets/progressbar-top.png')}/> */}
+        <View style={[styles.barBase, styles.bar]} />
+        <View style={[styles.barTop, styles.bar]} />
     
     </View>
     )
@@ -26,11 +18,12 @@ const styles = StyleSheet.create({
         position:'relative',
         height:'auto',
         width:'100%',
-        overflow:'visible'
+        overflow:'visible',
+        marginTop:20,
+        marginBottom:20
     },
     bar:{
         height: 8,
-        // backgroundColor: 'green',
         borderRadius:10,
         position:'absolute',
     },
