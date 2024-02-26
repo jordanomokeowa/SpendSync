@@ -15,6 +15,8 @@ export default function HomePage(){
 
 const styles = StyleSheet.create({
     wrapper: {
-        height: '100%'
+        maxHeight:'100%',
+        display:'flex',
+        flex:1
     }
 })

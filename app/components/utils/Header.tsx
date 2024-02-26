@@ -14,6 +14,7 @@ export default function Header(){
 
 const styles = StyleSheet.create({
     wrapper: {
+        marginVertical:10,
         display: 'flex',
         flexDirection: 'row',
         justifyContent:'space-between',

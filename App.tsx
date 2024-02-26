@@ -32,7 +32,8 @@ export default function App() {
     var test: SpendItem = {
       id: Guid.newGuid().toString(),
       title: "TEST TITLE",
-      value: - 1000
+      value: - 1000,
+      dueDate: new Date('2024-02-01')
     };
     var list : SpendItem[] | undefined = await getSpendingList();
 
@@ -51,28 +52,16 @@ export default function App() {
     getItems();
   }, [])
 
-  var theme = createTheme({
-    lightColors: {
-      ...Platform.select({
-        default: lightColors.platform.android,
-        ios: lightColors.platform.ios,
-    })},
-    darkColors: {
-      ...Platform.select({
-        default: darkColors.platform.android,
-        ios: darkColors.platform.ios,
-    })},
-    mode: 'light',
-  });
+
 
   return (
     <SafeAreaView style={styles.wrapper}>
-      <ThemeProvider theme={theme}>
+
         {/* This button's color will now be the default iOS / Android blue. */}
           <View style={styles.summaryContainer}>
             <HomePage />
           </View>
-      </ThemeProvider>
+
       <StatusBar style="auto" />
     </SafeAreaView>
 
@@ -81,33 +70,14 @@ export default function App() {
 
 const styles = StyleSheet.create({
   wrapper: {
-    backgroundColor:'#474F7A',
+    paddingTop:NativeStatusBar.currentHeight,
     height:'100%',
-
+    backgroundColor:'#474F7A'
   },
   summaryContainer: {
-    marginTop:NativeStatusBar.currentHeight,
     paddingLeft: 15,
     paddingRight: 15,
-    // backgroundColor: '#474F7A',
-    // width: '100%',
-    // height: '20%',
-    // justifyContent:'center',
-    // alignItems: 'center',
-  },
-  item: {
-    aspectRatio: 1,
-    flex: 1,
-    width: 50,
-    height: 50,
-  },
-  bodyContainer: {
-    // height: '80%',
-    // gap: 100
-  },
-  title: {
-    fontWeight: 'bold',
-    color: 'white',
+    height:'100%',
   }
 });
 

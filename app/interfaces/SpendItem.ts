@@ -3,4 +3,6 @@ export default interface SpendItem {
     title: string;
     value: number;
     notes?: string;
+    dueDate: Date;
+    dateParent?: boolean;
 }
