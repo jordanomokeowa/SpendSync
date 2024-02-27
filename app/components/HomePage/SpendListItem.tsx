@@ -3,11 +3,6 @@ import SpendItem from "../../interfaces/SpendItem";
 import React from "react";
 import {StyleSheet, Text, View} from 'react-native';
 
-
-export type Props = {
-    item:SpendItem
-  };
-
 const SpendListItem = ({item}: {item: SpendItem}) => {
     return (
     <View style={styles.wrapper}>
@@ -41,12 +36,14 @@ const styles = StyleSheet.create({
     itemBox:{
         flexGrow:1,
         flexDirection:'row',
-        justifyContent:'space-between'
+        justifyContent:'space-between',
+        flex:1
     },
     itemText:{
         color:'white',
         fontFamily:'Lato_300Light',
-        fontSize:20
+        fontSize:20,
+        flex:1
     },
     list:{
         borderRadius:10,

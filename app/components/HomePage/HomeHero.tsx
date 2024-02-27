@@ -1,29 +1,34 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {StyleSheet, Text, View } from 'react-native';
 import {
     useFonts,
-    Lato_100Thin,
-    Lato_100Thin_Italic,
     Lato_300Light,
-    Lato_300Light_Italic,
     Lato_400Regular,
   } from '@expo-google-fonts/lato';
 import ProgressBar from '../utils/ProgressBar';
+import {GetSpendTotal} from '../../services/SpendService';
 
-export default function HomeHero(){
-    let [fontsLoaded] = useFonts({
-        Lato_100Thin,
-        Lato_100Thin_Italic,
-        Lato_300Light,
-        Lato_300Light_Italic,
-        Lato_400Regular,
+export default function HomeHero({updated}:{updated: Date}){
+    const [total, setTotal] = useState<number>();
+    let [fontsLoaded] = useFonts({Lato_300Light, Lato_400Regular});
 
-      });
+    const fetchData = async () => { 
+        var result = await GetSpendTotal();
+        setTotal(result);
+    }
 
-      if (!fontsLoaded) {
+    useEffect(() => {
+        fetchData();
+    },[]);
+
+    useEffect(() => {
+        fetchData();
+    },[updated])
+
+
+    if (!fontsLoaded) {
         return <Text>Loading...</Text>;
-      }
-
+    }
 
     return (
     <View style={styles.wrapper}>
@@ -34,12 +39,12 @@ export default function HomeHero(){
         
         <View style={styles.valueWrapper}>
             <Text 
-            style={styles.valuePrimary}>£4000</Text><Text style={styles.valueSecondary}>.25</Text> 
+            style={styles.valuePrimary}>£{total}</Text><Text style={styles.valueSecondary}>.25</Text> 
         </View>
 
         <ProgressBar />
 
-        <Text style={styles.updatedText}>Last Updated 12:59, 21 Feb 24</Text>
+        <Text style={styles.updatedText}>Last Updated {updated.toDateString()}</Text>
 
         <View style={styles.widgetBox}>
             <View>

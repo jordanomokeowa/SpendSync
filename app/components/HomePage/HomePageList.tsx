@@ -1,42 +1,48 @@
 import { useFonts, Lato_300Light, } from '@expo-google-fonts/lato';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {FlatList, StyleSheet, Text, View} from 'react-native';
 import SpendData from '../../data/SpendData';
 import SpendListItem from './SpendListItem';
 import SpendItem from '../../interfaces/SpendItem';
+import { GetSpendItems } from '../../services/SpendService';
 
 
-export default function HomePageList(){
+export default function HomePageList({updated}:{updated:Date}){
 
-    const [fontsLoaded] = useFonts({
-    Lato_300Light
-    });
+    const [spendList, setSpendList] = useState<SpendItem[]>([]);
+    const [fontsLoaded] = useFonts({Lato_300Light});
 
-    if (!fontsLoaded) {
-    return <Text>Loading...</Text>;
-    }
+    const GetDataByDate = async () => {
+        try {
+            var items = await GetSpendItems();
+            console.log("getitemsbydate:", items);
+            setSpendList(items);
 
-    var sortedData = SpendData.sort((a, b) => {return a.dueDate.getTime() - b.dueDate.getTime()});
-
-    const GroupDataByDate = (data: SpendItem[]) => {
-        var date = new Date('0000-01-01');
-        for(let i = 0; i< sortedData.length; i++){
-            var itemDate = sortedData[i].dueDate;
-            if(itemDate > date){
-                sortedData[i].dateParent = true;
-                date = sortedData[i].dueDate
-            }
+            
+        } catch (error) {
+            console.error('Error fetching spend items:', error);
         }
     }
 
-    GroupDataByDate(sortedData);
+    useEffect(() => {
+        GetDataByDate();
+    }, [])
+
+    useEffect(() => {
+        GetDataByDate();
+    }, [updated])
+
+
+    if (!fontsLoaded) {
+        return <Text>Loading...</Text>;
+    }
 
     return (
     <View style={styles.wrapper}>
         <Text style={styles.upcomingText} >Upcoming Payments</Text>
         <FlatList
         keyExtractor={(_, index) => index.toString() }
-        data={sortedData} 
+        data={spendList} 
         renderItem={(item) => <SpendListItem item={item.item}/>}>        
         </FlatList>
     </View>

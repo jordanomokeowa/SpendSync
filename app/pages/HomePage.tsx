@@ -2,14 +2,14 @@ import {StyleSheet, Text, View } from 'react-native';
 import Header from '../components/utils/Header';
 import HomeHero from '../components/HomePage/HomeHero';
 import HomePageList from '../components/HomePage/HomePageList';
-import React from 'react';
+import React, { Dispatch } from 'react';
 
-export default function HomePage(){
+export default function HomePage({updated, setLastUpdated}: {updated: Date, setLastUpdated: Dispatch<React.SetStateAction<Date>>}){
     return (
     <View style={styles.wrapper}>
-        <Header/>
-        <HomeHero />
-        <HomePageList />
+        <Header setLastUpdated={setLastUpdated} />
+        <HomeHero updated={updated} />
+        <HomePageList updated={updated} />
     </View>)
 }
 
